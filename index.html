@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário | HL</title>
+    <link rel="icon" type="image/x-icon" href="funchl.jpeg">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, rgb(0, 132, 255), rgb(0, 3, 158));
+            margin: 0;
+            /* Remova margens padrão do body */
+            display: flex;
+            justify-content: center;
+            /* Centralizar horizontalmente */
+            align-items: center;
+            /* Centralizar verticalmente */
+            height: 100vh;
+            /* Garantir que o formulário ocupe a altura total da tela */
+        }
+
+        .img {
+            height: 400px;
+            width: 390px;
+        }
+
+        .img img {
+            width: 10px;
+            height: 10px;
+        }
+
+        .box {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            /* Ajuste a largura do formulário conforme desejado */
+            max-width: 500px;
+            /* Limita a largura máxima do formulário */
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: 95%;
+                /* Redimensiona o formulário para telas menores */
+            }
+        }
+
+        fieldset {
+            border: 3px solid dodgerblue;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        legend {
+            border: 1px solid dodgerblue;
+            padding: 10px;
+            text-align: center;
+            background-color: dodgerblue;
+            border-radius: 8px;
+        }
+
+        .inputbox {
+            position: relative;
+            margin-bottom: 20px;
+            /* Espaçamento entre os campos de entrada */
+        }
+
+        .inputUser {
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            /* Ocupar toda a largura do pai */
+            letter-spacing: 2px;
+        }
+
+        .labelInput {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transition: .5s;
+            color: dodgerblue;
+            /* Mudei a cor da label quando o campo está preenchido */
+        }
+
+        .inputUser:focus~.labelInput,
+        .inputUser:valid~.labelInput {
+            top: -20px;
+            font-size: 12px;
+        }
+
+        #data_nascimento {
+            border: none;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* Limitações */
+        textarea,
+            input[type="text"],
+            input[type="date"],
+            input[type="tel"] {
+                width: 100%;
+                box-sizing: border-box;
+                /* Adiciona preenchimento e borda ao tamanho total */
+        }
+
+        /Observações/
+        #obs {
+            width: 100%;
+            /* Ocupar toda a largura do pai */
+            resize: vertical;
+
+        }
+
+        .peso {
+            width: 100%;
+            /* Ocupar toda a largura do pai */
+            resize: vertical;
+        }
+
+        .bracos {
+            width: 100%;
+            /* Ocupar toda a largura do pai */
+            resize: vertical;
+        }
+
+        #submit {
+            width: 100%;
+            /* Botão de largura total */
+            padding: 10px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #submit:hover {
+            background-color: rgb(0, 102, 204);
+        }
+
+        .smallTextInput {
+            width: 150px;
+            /* Defina o tamanho desejado */
+            height: 100px;
+            /* Defina a altura desejada */
+            overflow-y: auto;
+            /* Permite a rolagem vertical quando necessário */
+            text-align: center;
+            /* Centraliza o texto horizontalmente */
+            line-height: 100px;
+            /* Centraliza o texto verticalmente */
+            font-family: Arial, sans-serif;
+            /* Define a fonte do texto */
+            font-size: 14px;
+            /* Define o tamanho da fonte */
+            color: #333;
+            /* Define a cor do texto */
+            border: 1px solid #ccc;
+            /* Adiciona uma borda */
+            padding: 5px;
+            /* Adiciona espaçamento interno */
+
+            /* Formatação do texto */
+            font-weight: bold;
+            /* Define a espessura da fonte como negrito */
+            font-style: italic;
+            /* Define o estilo da fonte como itálico */
+            text-transform: uppercase;
+            /* Converte o texto em maiúsculas */
+            letter-spacing: 2px;
+            /* Define o espaçamento entre letras */
+            word-spacing: 5px;
+            /* Define o espaçamento entre palavras */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            /* Defina o máximo para evitar que o formulário se espalhe muito */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="/funchl.jpeg" alt="Imagem">
+        </div>
+
+        <div class="box">
+            <form action="https://sheetdb.io/api/v1/0z8ul0n978bca" method="post" name="Formulario"
+                onsubmit="submitForm(event)">
+                <fieldset>
+                    <legend><b>Formulário do Aluno</b></legend>
+                    </legend>
+                    <br>
+                    <div class="inputbox">
+                        <input type="text" name="Nome" id="Nome" class="inputUser" required>
+                        <!-- Inputuser para depois manipular o css-->
+                        <label for="nome" class="labelInput">Nome Completo</label>
+                        <div>
+                            <br>
+                            <div class="inputbox">
+                                <input type="text" name="email" id="email" class="inputUser" required>
+                                <!-- Inputuser para depois manipular o css-->
+                                <label for="email" class="labelInput">Email</label>
+                            </div>
+                            <div class="inputbox">
+                                <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                                <!-- Inputuser para depois manipular o css-->
+                                <label for="telefone" class="labelInput">Telefone</label>
+                            </div>
+                            <p><b>Gênero:</b></p>
+                            <input type="radio" id="feminino" name="genero" value="feminino" required>
+                            <label for="feminino">Feminino</label>
+                            <br>
+                            <input type="radio" id="masculino" name="genero" value="masculino" required>
+                            <label for="masculino">Masculino</label>
+                            <br>
+                            <input type="radio" id="outro" name="genero" value="outro" required>
+                            <label for="outro">Outro</label>
+                            <br><br>
+                            <label for="data_nascimento"><b>Data de Nascimento:</b></label>
+                            <input type="date" name="data_nascimento" id="data_nascimento" required>
+                        </div>
+                        <br>
+                        <div class="inputbox">
+                            <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                            <!-- Inputuser para depois manipular o css-->
+                            <label for="cidade" class="labelInput">Cidade</label>
+                        </div>
+                        <br>
+                        <div class="inputbox">
+                            <input type="text" name="estado" id="estado" class="inputUser" required>
+                            <!-- Inputuser para depois manipular o css-->
+                            <label for="estado" class="labelInput">Estado</label>
+                        </div>
+                        <br>
+                        <div class="inputbox">
+                            <input type="text" name="endereco" id="endereco" class="inputUser" required>
+                            <label for="endereco" class="labelInput">Endereço</label>
+                        </div>
+                        <p><b>Informações Fisicas:</b></p>
+                        <b>
+                            <div class="inputbox">
+                                <label for="peso"><b>Peso:</b></label>
+                                <input type="text" name="peso" id="peso" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="altura"><b>Altura:</b></label>
+                                <input type="text" name="altura" id="altura" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="bracos_flexionados"><b>Braços Flexionados: </b></label>
+                                <input type="text" name="bracos_flexionados" id="bracos_flexionados" class="inputUser"
+                                    required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="bracos_esticados"><b>Braços Esticados: </b></label>
+                                <input type="text" name="bracos_esticados" id="bracos_esticados" class="inputUser"
+                                    required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="torax"><b>Tórax: </b></label>
+                                <input type="text" name="torax" id="torax" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="quadril"><b>Quadril: </b></label>
+                                <input type="text" name="quadril" id="quadril" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="cintura"><b>Cintura: </b></label>
+                                <input type="text" name="cintura" id="cintura" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="coxas"><b>Coxas: </b></label>
+                                <input type="text" name="coxas" id="coxas" class="inputUser" required>
+                            </div>
+                            <div class="inputbox">
+                                <label for="panturrilha"><b>Panturrilhas: </b></label>
+                                <input type="text" name="panturrilha" id="panturrilha" class="inputUser" required>
+                            </div>
+                                    <div class="inputbox">
+                                        <label for="objetivos"><b>Objetivos: </b></label>
+                                        <input type="text" name="objetivos" id="objetivos" class="inputUser" required>
+                                    </div>   
+                            <div class="inputbox">
+                                <label for="limitacoes"><b>Limitações: </b></label>
+                                <input type="text" name="limitacoes" id="limitacoes" class="inputUser" required>
+                                    </div>
+                            </div>
+                            <div class="obs">
+                                <label for="obs"><b>Observações:</b></label>
+                                <textarea name="obs" id="obs" rows="3,0" placeholder="Aqui você me conta se precisa de algo mais!"></textarea>
+                            </div>
+                            <br>
+                            <input type="submit" nome="submit" id="submit">
+                </fieldset>
+            </form>
+        </div>
+        <script>
+            function submitForm(event) {
+                event.preventDefault();
+        
+                var form = document.querySelector('form[name="Formulario"]');
+                var formData = new FormData(form);
+        
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showMessage("Formulário enviado com sucesso!");
+                        form.reset();
+                    } else {
+                        alert("Ocorreu um erro ao enviar o formulário. Por favor, tente novamente mais tarde.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert("Ocorreu um erro ao enviar o formulário. Por favor, tente novamente mais tarde.");
+                });
+            }
+        
+            function showMessage(message) {
+                // Aqui você pode adicionar código para exibir a mensagem como preferir,
+                // por exemplo, você pode criar um elemento <div> para exibir a mensagem
+                // e adicioná-lo ao DOM.
+                alert(message); // Este é um exemplo simples, pode não ser a melhor maneira de mostrar a mensagem.
+            }
+        </script>
+</body>
+
+</html>
